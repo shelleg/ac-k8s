@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: ants-smashing-service
+ labels:
+   app: ants-smashing-service
+spec:
+ replicas: 1
+ selector:
+   matchLabels:
+     app: ants-smashing-service
+ template:
+   metadata:
+     labels:
+       app: ants-smashing-service
+   spec:
+     containers:
+     - name: ants-smashing-service
+       image: tikal/ants-smashing-service
+       ports:
+       - containerPort: 5080
+       - containerPort: 8080

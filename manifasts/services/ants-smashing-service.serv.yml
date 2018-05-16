@@ -1,0 +1,11 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: ants-smashing-service
+spec:
+  selector:
+    app: ants-smashing-service
+  ports:
+  - protocol: TCP
+    port: 5080
+    targetPort: 5080
