@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: ants-publisher-conf.json
+    namespace: ant-crash 
+data: 
+    ant-publisher-conf.json: |-
+                               {
+                                    "clientMinPingIntervalInSec":60,
+                                    "serverSendHeartbeatIntervalInSec":10,
+                                    "http-port" : 6080,
+                                    "kafkaTopicName":"ant-topic",
+                                    "kafka-consumer":{
+                                      "bootstrap.servers":"bootstrap.kafka:9092",
+                                      "key.deserializer":"org.apache.kafka.common.serialization.StringDeserializer",
+                                      "value.deserializer":"org.apache.kafka.common.serialization.StringDeserializer",
+                                      "group.id":"ants-publisher"
+                                    }
+                                 }
