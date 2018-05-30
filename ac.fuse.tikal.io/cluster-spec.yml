@@ -1,0 +1,53 @@
+apiVersion: kops/v1alpha2
+kind: Cluster
+metadata:
+  creationTimestamp: 2018-05-09T13:31:55Z
+  name: ac.fuze.tikal.io
+spec:
+  api:
+    dns: {}
+  authorization:
+    rbac: {}
+  channel: stable
+  cloudProvider: aws
+  configBase: s3://ac.fuse.tikal.io/ac.fuze.tikal.io
+  etcdClusters:
+  - etcdMembers:
+    - instanceGroup: master-eu-west-1b-1
+      name: "1"
+    - instanceGroup: master-eu-west-1b-2
+      name: "2"
+    - instanceGroup: master-eu-west-1b-3
+      name: "3"
+    name: main
+  - etcdMembers:
+    - instanceGroup: master-eu-west-1b-1
+      name: "1"
+    - instanceGroup: master-eu-west-1b-2
+      name: "2"
+    - instanceGroup: master-eu-west-1b-3
+      name: "3"
+    name: events
+  iam:
+    allowContainerRegistry: true
+    legacy: false
+  kubernetesApiAccess:
+  - 0.0.0.0/0
+  kubernetesVersion: 1.9.3
+  masterPublicName: api.ac.fuze.tikal.io
+  networkCIDR: 172.20.0.0/16
+  networking:
+    calico: {}
+  nonMasqueradeCIDR: 100.64.0.0/10
+  sshAccess:
+  - 0.0.0.0/0
+  subnets:
+  - cidr: 172.20.32.0/19
+    name: eu-west-1b
+    type: Public
+    zone: eu-west-1b
+  topology:
+    dns:
+      type: Public
+    masters: public
+    nodes: public
