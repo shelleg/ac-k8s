@@ -1,0 +1,5 @@
+piVersion: v1
+appVersion: "1.0"
+description: "ant-firehose"
+name: ant-firehose
+version: 0.1.0

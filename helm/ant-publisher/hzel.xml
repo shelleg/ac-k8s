@@ -1,0 +1,45 @@
+"<hazelcast xsi:schemaLocation=\"http://www.hazelcast.com/schema/config
+        hazelcast-config-3.6.xsd\"\n           xmlns=\"http://www.hazelcast.com/schema/config\"\n
+        \          xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\n    <group>\n
+\       <name>anodotd-srv</name>\n        <password>kube-pass</password>\n    </group>\n
+        \   <properties>\n        <!-- at the moment the discovery needs to be activated
+    explicitly -->\n        <property name=\"hazelcast.rest.enabled\">true</property>\n
+        \       <property name=\"hazelcast.discovery.enabled\">true</property>\n\t<property
+name=\"hazelcast.logging.type\">slf4j</property>\n    </properties>\n\n   <network>\n
+\   <join>\n      <!-- deactivate normal discovery -->\n      <multicast enabled=\"false\"/>\n
+    \     <tcp-ip enabled=\"false\" />\n\n      <!-- activate the Kubernetes plugin
+    -->\n        <discovery-strategies>\n            <discovery-strategy enabled=\"true\"\n
+        \                               class=\"com.hazelcast.kubernetes.HazelcastKubernetesDiscoveryStrategy\">\n
+        \               <properties>\n                    <property name=\"service-name\">anodotd-srv</property>\n
+        \                   <property name=\"service-label-name\">anodotd-srv</property>\n
+    \                   <property name=\"service-label-value\">true</property>\n                    <property
+        name=\"namespace\">{{ .Values.namespace }}</property>\n                </properties>\n            </discovery-strategy>\n
+        \       </discovery-strategies>\n      </join>\n    </network>\n\n    <executor-service
+name=\"default\">\n        <pool-size>1</pool-size>\n        <!--Queue capacity.
+    0 means Integer.MAX_VALUE.-->\n        <queue-capacity>50000</queue-capacity>\n
+        \   </executor-service>\n\n    <map name=\"metrics\">\n        <!--\n            Number
+    of backups. If 1 is set as the backup-count for example, then all entries of\n
+    \           the map will be copied to another JVM for fail-safety. 0 means no
+    backup.\n        <backup-count>0</backup-count> -->\n\n        <backup-count>0</backup-count>\n\t<async-backup-count>0</async-backup-count>\n
+        \       <!--<in-memory-format>OBJECT</in-memory-format>-->\n\n        <!--\n\t
+    \       Maximum number of seconds for each entry to stay in the map. Entries that
+    are\n\t\t\tolder than <time-to-live-seconds> and not updated for <time-to-live-seconds>\n\t\t\twill
+    get automatically evicted from the map.\n\t\t\tAny integer between 0 and Integer.MAX_VALUE.
+    0 means infinite. Default is 0.\n        -->\n        <time-to-live-seconds>0</time-to-live-seconds>\n
+        \       <!--\n        \tMaximum number of seconds for each entry to stay idle
+    in the map. Entries that are\n\t\t\tidle(not touched) for more than <max-idle-seconds>
+    will get\n\t\t\tautomatically evicted from the map. Entry is touched if get, put
+    or containsKey is called.\n\t\t\tAny integer between 0 and Integer.MAX_VALUE.
+    0 means infinite. Default is 0.\n        -->\n        <max-idle-seconds>0</max-idle-seconds>\n
+        \       <!--\n            Valid values are:\n            NONE (no eviction),\n
+    \           LRU (Least Recently Used),\n            LFU (Least Frequently Used).\n
+    \           NONE is the default.\n        -->\n        <eviction-policy>NONE</eviction-policy>\n
+        \       <!--\n            Maximum size of the map. When max size is reached,\n
+    \           map is evicted based on the policy defined.\n            Any integer
+    between 0 and Integer.MAX_VALUE. 0 means\n            Integer.MAX_VALUE. Default
+    is 0.\n        -->\n        <!-- <max-size policy=\"cluster_wide_map_size\">0</max-size>\n\n
+    \           When max. size is reached, specified percentage of\n            the
+    map will be evicted. Any integer between 0 and 100.\n            If 25 is set
+    for example, 25% of the entries will\n            get evicted.\n        -->\n
+        \       <eviction-percentage>25</eviction-percentage>\n        <merge-policy>com.hazelcast.map.merge.PassThroughMergePolicy</merge-policy>\n
+        \   </map>\n</hazelcast>\n"
