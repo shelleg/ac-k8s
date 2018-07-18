@@ -11,9 +11,16 @@ spec:
     spec:
       containers:
       - name: ant-publisher
-        image: tikal/ants-publisher
+        image: tikal/ants-publisher:{{.Values.image.tag}}"
         ports:
          - containerPort: 6080
+        volumeMounts:
+        - name: conf
+          mountPath: {{ .Values.confMountDir }}
+      volumes:
+      - name: conf
+        configMap:
+          name: ant-publisher-conf
 ---
 apiVersion: v1
 kind: Service
