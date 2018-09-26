@@ -1,7 +1,0 @@
-dependencies:
-- name: kfaka
-  repository: s3://anodot-helm-charts/charts
-  version: 0.1.0
-- name: default-http
-  repository: s3://anodot-helm-charts/charts
-  version: 0.1.0
