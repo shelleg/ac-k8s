@@ -1,8 +1,8 @@
+---
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
   name: ants-firehose
-  namespace: "{{ .Values.namespace }}"
 spec:
   replicas: 1
   template:
@@ -15,31 +15,24 @@ spec:
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         image: "{{.Values.image.repository}}:{{.Values.image.tag}}"
         ports:
-         - containerPort: 7080
+        - containerPort: 7080
         volumeMounts:
         - name: conf
           mountPath: {{ .Values.confMountDir }}
       volumes:
       - name: conf
         configMap:
-            name: ant-firehose-conf
+          name: ant-firehose-conf
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: ants-firehose
-  namespace: ant-crash2
 spec:
- selector:
-  app: ants-firehose
- ports:
-  - name: "input"
-    port: 7080
-    targetPort: 7080   
- type: LoadBalancer
-
-       
-
-          
-
- 
+  selector:
+    app: ants-firehose
+  ports:
+    - name: "input"
+      port: 7080
+      targetPort: 7080
+  type: LoadBalancer

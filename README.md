@@ -24,8 +24,9 @@ See [./ac.fuse.tikal.io/](./ac.fuse.tikal.io/)
 Use helm command-line tool to deploy ant-crasher:
 
 ```sh
-helm deb build ./helm/ant-umbrella
-helm install ./helm/ant-umbrella
+kubectl create namespace ac
+helm dep build ./helm/ant-umbrella
+helm install --namespace ac ./helm/ant-umbrella
 ```
 
 The `ant-umbrella` helm chart is an umbrella that deploys the following

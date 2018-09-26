@@ -2,5 +2,4 @@ image:
   repository: "tikal/ants-firehose"
   tag: "1.0"
   pullPolicy: Always
-namespace: "ant-crash2"
 confMountDir: /opt/firehose/conf
