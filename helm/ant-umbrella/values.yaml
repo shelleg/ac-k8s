@@ -1,0 +1,7 @@
+---
+
+# You can view all settings at
+# https://github.com/helm/charts/tree/master/incubator/kafka
+kafka:
+  persistence:
+    storageClass: gp2

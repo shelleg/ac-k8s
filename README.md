@@ -26,7 +26,7 @@ Use helm command-line tool to deploy ant-crasher:
 ```sh
 kubectl create namespace ac
 helm dep build ./helm/ant-umbrella
-helm install --namespace ac ./helm/ant-umbrella
+helm install --name ac --namespace ac ./helm/ant-umbrella
 ```
 
 The `ant-umbrella` helm chart is an umbrella that deploys the following
