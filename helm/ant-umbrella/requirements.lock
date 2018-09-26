@@ -1,4 +1,7 @@
 dependencies:
+- name: kafka
+  repository: http://storage.googleapis.com/kubernetes-charts-incubator
+  version: 0.10.0
 - name: ant-firehose
   repository: file://../ant-firehose/
   version: 0.1.0
@@ -8,5 +11,5 @@ dependencies:
 - name: ant-ui
   repository: file://../ant-ui/
   version: 0.1.0
-digest: sha256:c30ad35d3588ed99b183ae782804119c1f7087a2319eaea623b0303b29cb9f7d
-generated: 2018-09-26T15:22:21.416214399+03:00
+digest: sha256:d22294dcf38bebaf5e37738f33d3d4bf0ac3a5fa1168884efa5347bdeed82457
+generated: 2018-09-26T16:34:24.412915317+03:00
