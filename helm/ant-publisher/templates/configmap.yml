@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-    name: ants-publisher-conf.json
+    name: ant-publisher-conf.json
 data: 
     ant-publisher-conf.json: |-
                                {

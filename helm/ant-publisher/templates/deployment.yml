@@ -10,8 +10,8 @@ spec:
         app: ant-publisher
     spec:
       containers:
-      - name: ant-publisher
-        image: tikal/ants-publisher:{{.Values.image.tag}}"
+      - name: ants-publisher
+        image: {{ .Values.image.repository }}
         ports:
          - containerPort: 6080
         volumeMounts:
@@ -20,7 +20,7 @@ spec:
       volumes:
       - name: conf
         configMap:
-          name: ant-publisher-conf
+          name: ant-publisher-conf.json
 ---
 apiVersion: v1
 kind: Service

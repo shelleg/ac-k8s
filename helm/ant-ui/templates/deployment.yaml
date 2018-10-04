@@ -49,3 +49,16 @@ spec:
       tolerations:
 {{ toYaml . | indent 8 }}
     {{- end }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ant-ui
+spec:
+  selector:
+    app: ant-ui
+  ports:
+  - name: "input"
+    port: 80
+    targetPort: 5000
+  type: LoadBalancer
