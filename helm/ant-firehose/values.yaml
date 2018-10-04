@@ -3,3 +3,4 @@ image:
   tag: "1.0"
   pullPolicy: Always
 confMountDir: /opt/firehose/conf
+serviceName: ac-kafka

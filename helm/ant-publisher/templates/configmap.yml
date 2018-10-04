@@ -10,7 +10,7 @@ data:
                                     "http-port" : 6080,
                                     "kafkaTopicName":"ant-topic",
                                     "kafka-consumer":{
-                                      "bootstrap.servers":"bootstrap.kafka:9092",
+                                      "bootstrap.servers":"{{ .Values.serviceName}}:9092",
                                       "key.deserializer":"org.apache.kafka.common.serialization.StringDeserializer",
                                       "value.deserializer":"org.apache.kafka.common.serialization.StringDeserializer",
                                       "group.id":"ants-publisher"
