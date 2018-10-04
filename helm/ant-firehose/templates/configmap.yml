@@ -174,7 +174,7 @@ data:
 
     </hazelcast>
   conf.json: "{\n\t\"http-port\" : 7080,\n    \"randomDelayInMillisBeforeFirstStep\":2500,\n
-    \   \"kafkaTopicName\":\"ant-topic\",\n    \"kafka-producer\":{\n      \"bootstrap.servers\":\"bootstrap.kafka:9092\",\n
+    \   \"kafkaTopicName\":\"ant-topic\",\n    \"kafka-producer\":{\n      \"bootstrap.servers\":\"{{ .Values.serviceName}}:9092\",\n
     \     \"key.serializer\":\"org.apache.kafka.common.serialization.StringSerializer\",\n
     \     \"value.serializer\":\"org.apache.kafka.common.serialization.StringSerializer\",\n
     \     \"acks\":\"1\"\n    }\n}"
