@@ -10,4 +10,4 @@ dependencies:
   version: 0.2.0
 - name: ant-ui
   repository: file://../ant-ui/
-  version: 0.1.0-ant-ui-219
+  version: 0.1.0-ant-ui-220
