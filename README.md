@@ -14,6 +14,18 @@ Ensure you have the incubator helm repository set-up:
 ```sh
 helm repo add incubator http://storage.googleapis.com/kubernetes-charts-incubator
 ```
+Install helm-s3 plugin:
+
+```sh
+helm plugin install https://github.com/hypnoglow/helm-s3.git
+```
+
+Add the ac-charts S3 helm repository:
+
+```sh
+helm repo add ac-charts s3://ac-charts/charts
+```
+
 
 ## Kubernetes Installation
 
