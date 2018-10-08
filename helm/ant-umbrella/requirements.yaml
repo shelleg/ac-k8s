@@ -9,5 +9,5 @@ dependencies:
   repository: file://../ant-publisher/
   version: 0.2.0
 - name: ant-ui
-  repository: file://../ant-ui/
+  repository: '@ac-charts'
   version: 0.1.0-ant-ui-223
