@@ -13,7 +13,7 @@ spec:
       containers:
       - name: ants-firehose
         imagePullPolicy: {{ .Values.image.pullPolicy }}
-        image: "{{.Values.image.repository}}:{{.Values.image.tag}}"
+        image: {{ .Values.image.repository }}
         ports:
         - containerPort: 7080
         volumeMounts:
