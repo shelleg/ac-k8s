@@ -4,7 +4,7 @@ dependencies:
   version: 0.10.0
 - name: ant-firehose
   repository: file://../ant-firehose/
-  version: 0.2.0
+  version: 0.1.1
 - name: ant-publisher
   repository: file://../ant-publisher/
   version: 0.1.2
