@@ -10,7 +10,7 @@ spec:
         app: ant-publisher
     spec:
       containers:
-      - name: ants-publisher
+      - name: {{ .Release.Name }}-{{ template "ant-publisher.name" . }}
         image: {{ .Values.image.repository }}
         ports:
          - containerPort: 6080
@@ -21,19 +21,6 @@ spec:
       - name: conf
         configMap:
           name: ant-publisher-conf.json
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: ant-publisher
-spec:
- selector:
-  app: ant-publisher
- ports:
-  - name: "input"
-    port: 6080
-    targetPort: 6080   
- type: LoadBalancer
 
        
 

@@ -23,16 +23,4 @@ spec:
       - name: conf
         configMap:
           name: ant-firehose-conf
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: ants-firehose
-spec:
-  selector:
-    app: ants-firehose
-  ports:
-    - name: "input"
-      port: 7080
-      targetPort: 7080
-  type: LoadBalancer
+

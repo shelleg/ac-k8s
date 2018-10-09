@@ -1,7 +1,7 @@
 apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
-  name: {{ template "ant-ui.fullname" . }}
+  name: {{ .Release.Name }}-{{ template "ant-ui.name" . }}
   labels:
     app: {{ template "ant-ui.name" . }}
     chart: {{ template "ant-ui.chart" . }}
