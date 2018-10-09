@@ -10,8 +10,8 @@ spec:
         app: ant-publisher
     spec:
       containers:
-      - name: {{ .Release.Name }}-{{ template "ant-publisher.name" . }}
-        image: {{ .Values.image.repository }}
+      - name:  {{ .Chart.Name }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         ports:
          - containerPort: 6080
         volumeMounts:
