@@ -3,11 +3,11 @@ dependencies:
   repository: '@incubator'
   version: 0.10.0
 - name: ant-firehose
-  repository: '@ac-charts'
-  version: 0.1.19
+  repository: file://../ant-firehose
+  version: 0.2.1
 - name: ant-publisher
-  repository: '@ac-charts'
-  version: 0.1.18
+  repository: file://../ant-publisher
+  version: 0.2.1
 - name: ant-ui
-  repository: '@ac-charts'
-  version: 0.1.225
+  repository: file://../ant-ui
+  version: 0.1.0

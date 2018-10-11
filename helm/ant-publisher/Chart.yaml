@@ -2,4 +2,4 @@ apiVersion: v1
 appVersion: "1.0"
 description: "ant-publisher"
 name: ant-publisher
-version: 0.2.0
+version: 0.2.1

@@ -2,18 +2,18 @@
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: ants-firehose
+  name: {{ .Release.Name }}-{{ template "ants-firehose.name" . }}
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: ants-firehose
+        app: {{ template "ants-firehose.name" . }}
     spec:
       containers:
-      - name: ants-firehose
+      - name: {{ .Chart.Name }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
-        image: {{ .Values.image.repository }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         ports:
         - containerPort: 7080
         volumeMounts:
