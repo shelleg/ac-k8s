@@ -2,13 +2,13 @@
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: {{ .Release.Name }}-{{ template "ants-firehose.name" . }}
+  name: {{ include "ants-firehose.name" . }}
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: {{ template "ants-firehose.name" . }}
+        app: {{ include "ants-firehose.name" . }}
     spec:
       containers:
       - name: {{ .Chart.Name }}
