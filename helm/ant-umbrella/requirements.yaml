@@ -4,10 +4,10 @@ dependencies:
   version: 0.10.0
 - name: ant-firehose
   repository: '@ac-charts'
-  version: 0.1.52
+  version: 0.1.54
 - name: ant-publisher
   repository: '@ac-charts'
-  version: 0.1.61
+  version: 0.1.62
 - name: ant-ui
   repository: '@ac-charts'
   version: 0.1.230
