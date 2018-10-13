@@ -12,6 +12,6 @@ spec:
     app: ants-firehose
   ports:
     - name: "input"
-      port: 7080
-      targetPort: 7080
-  type: LoadBalancer
+      port: {{ .Values.service.port }}
+      targetPort: {{ .Values.service.port }}
+  type: {{ .Values.service.type }}

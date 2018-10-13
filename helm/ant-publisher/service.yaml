@@ -13,7 +13,7 @@ spec:
     release: {{ .Release.Name }}
   ports:
     - name: "input"
-      port: 6080
-      targetPort: 6080
+      port: {{ .Values.service.port }}
+      targetPort: {{ .Values.service.port }}
       protocol: TCP
-  type: LoadBalancer
+  type: {{ .Values.service.type }}

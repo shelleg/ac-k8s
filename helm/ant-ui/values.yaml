@@ -10,8 +10,9 @@ image:
   pullPolicy: Always
 
 service:
-  type: ClusterIP
+  type: LoadBalancer
   port: 80
+  targetPort: 5000
 
 ingress:
   enabled: false

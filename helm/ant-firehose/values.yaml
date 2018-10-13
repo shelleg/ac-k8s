@@ -4,3 +4,6 @@ image:
   pullPolicy: Always
 confMountDir: /opt/firehose/conf
 serviceName: ac-kafka
+service:
+  port: 7080
+  type: LoadBalancer
