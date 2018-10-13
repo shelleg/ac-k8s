@@ -1,4 +1,3 @@
----
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
@@ -11,16 +10,16 @@ spec:
         app: {{ include "ants-firehose.name" . }}
     spec:
       containers:
-      - name: {{ .Chart.Name }}
+        name: {{ include "ants-firehose.name" . }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
-        image: '{{ .Values.image.repository }}:{{ .Values.image.tag }}'
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         ports:
-        - containerPort: 7080
+          containerPort: 7080
         volumeMounts:
-        - name: conf
+          name: conf
           mountPath: {{ .Values.confMountDir }}
       volumes:
-      - name: conf
+        name: conf
         configMap:
           name: ant-firehose-conf
 
