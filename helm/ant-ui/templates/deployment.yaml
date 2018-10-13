@@ -1,28 +1,28 @@
 apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
-  name: {{ .Release.Name }}-{{ template "ant-ui.name" . }}
+  name: '{{ .Release.Name }}-{{ template "ant-ui.name" . }}'
   labels:
-    app: {{ template "ant-ui.name" . }}
-    chart: {{ template "ant-ui.chart" . }}
-    release: {{ .Release.Name }}
-    heritage: {{ .Release.Service }}
+    app: '{{ template "ant-ui.name" . }}'
+    chart: '{{ template "ant-ui.chart" . }}'
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: "{{ .Values.replicaCount }}"
   selector:
     matchLabels:
-      app: {{ template "ant-ui.name" . }}
-      release: {{ .Release.Name }}
+      app: '{{ template "ant-ui.name" . }}'
+      release: "{{ .Release.Name }}"
   template:
     metadata:
       labels:
-        app: {{ template "ant-ui.name" . }}
-        release: {{ .Release.Name }}
+        app: '{{ template "ant-ui.name" . }}'
+        release: "{{ .Release.Name }}"
     spec:
       containers:
-        - name: {{ .Chart.Name }}
-          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
+        - name: "{{ .Chart.Name }}"
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: "{{ .Values.image.pullPolicy }}"
           ports:
             - name: http
               containerPort: 5000
@@ -36,16 +36,16 @@ spec:
               path: /
               port: http
           resources:
-{{ toYaml .Values.resources | indent 12 }}
-    {{- with .Values.nodeSelector }}
+"{{ toYaml .Values.resources | indent 12 }}"
+    "{{- with .Values.nodeSelector }}"
       nodeSelector:
-{{ toYaml . | indent 8 }}
-    {{- end }}
-    {{- with .Values.affinity }}
+"{{ toYaml . | indent 8 }}"
+    "{{- end }}"
+    "{{- with .Values.affinity }}"
       affinity:
-{{ toYaml . | indent 8 }}
-    {{- end }}
-    {{- with .Values.tolerations }}
+"{{ toYaml . | indent 8 }}"
+    "{{- end }}"
+    "{{- with .Values.tolerations }}"
       tolerations:
-{{ toYaml . | indent 8 }}
-    {{- end }}
+"{{ toYaml . | indent 8 }}"
+    "{{- end }}"
