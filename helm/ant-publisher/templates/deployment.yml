@@ -10,20 +10,14 @@ spec:
         app: {{ template "ant-publisher.name" . }}
     spec:
       containers:
-      - name:  {{ include "ant-publisher.name" . }}
+        name:  {{ include "ant-publisher.name" . }}
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         ports:
-         - containerPort: 6080
+         containerPort: 6080
         volumeMounts:
-        - name: conf
+          name: conf
           mountPath: {{ .Values.confMountDir }}
       volumes:
-      - name: conf
+        name: conf
         configMap:
           name: ant-publisher-conf.json
-
-       
-
-          
-
- 
