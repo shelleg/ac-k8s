@@ -1,22 +1,22 @@
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: "{{ include \"ant-publisher.fullname\" . }}"
+  name: {{ include "ant-publisher.fullname" . }}
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: "{{ include \"ant-publisher.name\" . }}"
+        app: {{ include "ant-publisher.name" . }}
     spec:
       containers:
-        name:  "{{ include \"ant-publisher.name\" . }}"
-        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        name:  {{ include "ant-publisher.name" . }}
+        image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
         ports:
          containerPort: 6080
         volumeMounts:
           name: conf
-          mountPath: "{{ .Values.confMountDir }}"
+          mountPath: {{ .Values.confMountDir }}
       volumes:
         name: conf
         configMap:
