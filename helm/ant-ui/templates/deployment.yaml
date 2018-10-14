@@ -16,7 +16,7 @@ spec:
         release: {{ .Release.Name }}
     spec:
       containers:
-        name: {{ include "ant-ui.name" }}
+        name: {{ include "ant-ui.name" . }}
         image: tikal/ant-ui:1.0.236
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         ports:
