@@ -20,7 +20,7 @@ spec:
         imagePullPolicy:
           ? .Values.image.pullPolicy: null
           : null
-        image: tikal/ant-firehose:1.0.82
+        image: tikal/ant-firehose:1.0.83
         ports:
           containerPort: 7080
         volumeMounts:
