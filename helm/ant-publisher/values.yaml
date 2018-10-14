@@ -1,6 +1,6 @@
 image:
   repository: tikal/ants-publisher
-  tag: '1.1'
+  tag: tikal/ant-publisher:1.1.127
   pullPolicy: Always
 service:
   port: 6080
