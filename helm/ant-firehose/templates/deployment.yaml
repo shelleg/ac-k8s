@@ -12,7 +12,7 @@ spec:
       containers:
         name: \{\{ include "ants-firehose.name" . \}\}
         imagePullPolicy: \{\{ .Values.image.pullPolicy \}\}
-        image: tikal/ant-firehose:1.0.75
+        image: tikal/ant-firehose:1.0.76
         ports:
           containerPort: 7080
         volumeMounts:
