@@ -2,6 +2,7 @@ image:
   repository: tikal/ants-publisher
   tag: 1.1.132
   pullPolicy: Always
+replicaCount: 1
 service:
   port: 6080
   type: LoadBalancer

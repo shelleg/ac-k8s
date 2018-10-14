@@ -1,4 +1,4 @@
-apiVersion: apps/v1beta1
+apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
   name: {{ include "ants-firehose.name" . }}
@@ -12,7 +12,7 @@ spec:
       containers:
         name: {{ include "ants-firehose.name" . }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
-        image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         ports:
           containerPort: 7080
         volumeMounts:
