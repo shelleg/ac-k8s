@@ -1,7 +1,7 @@
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: {{ include "ants-firehose.name@ . }}
+  name: {{ include "ants-firehose.name" . }}
 spec:
   replicas: 1
   template:
