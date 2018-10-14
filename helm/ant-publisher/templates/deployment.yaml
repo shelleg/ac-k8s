@@ -1,43 +1,27 @@
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name:
-    ? include "ant-publisher.fullname" .: null
-    : null
+  name: {{ include "ant-publisher.fullname" . }}
   labels:
-    app:
-      ? include "ant-publisher.name" .: null
-      : null
-    chart:
-      ? include "ant-publisher.chart" .: null
-      : null
-    release:
-      ? .Release.Name: null
-      : null
-    heritage:
-      ? .Release.Service: null
-      : null
+    app: {{ include "ant-publisher.name" . }}
+    chart: {{ include "ant-publisher.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app:
-          ? include "ant-publisher.name" .: null
-          : null
+        app: {{ include "ant-publisher.name" . }}
     spec:
       containers:
-        name:
-          ? include "ant-publisher.name" .: null
-          : null
-        image: tikal/ant-publisher:1.1.101
+        name: {{ include "ant-publisher.name" . }}
+        image: tikal/ant-publisher:1.1.100
         ports:
           containerPort: 6080
         volumeMounts:
           name: conf
-          mountPath:
-            ? .Values.confMountDir: null
-            : null
+          mountPath: {{ .Values.confMountDir }}
       volumes:
         name: conf
         configMap:
