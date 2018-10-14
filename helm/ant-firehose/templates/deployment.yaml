@@ -1,23 +1,23 @@
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: \{\{ include "ants-firehose.name" . \}\}
+  name: {{ include "ants-firehose.name" . }}
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: \{\{ include "ants-firehose.name" . \}\}
+        app: {{ include "ants-firehose.name" . }}
     spec:
       containers:
-        name: \{\{ include "ants-firehose.name" . \}\}
-        imagePullPolicy: \{\{ .Values.image.pullPolicy \}\}
+        name: {{ include "ants-firehose.name" . }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
         image: tikal/ant-firehose:1.0.76
         ports:
           containerPort: 7080
         volumeMounts:
           name: conf
-          mountPath: \{\{ .Values.confMountDir \}\}
+          mountPath: {{ .Values.confMountDir }}
       volumes:
         name: conf
         configMap:
