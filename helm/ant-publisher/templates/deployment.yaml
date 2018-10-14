@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         name: {{ include "ant-publisher.name" . }}
-        image: tikal/ant-publisher:1.1.100
+        image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
         ports:
           containerPort: 6080
         volumeMounts:
