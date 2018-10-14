@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         name: {{ include "ant-ui.name" . }}
-        image: tikal/ant-ui:1.0.236
+        image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         ports:
           name: http
