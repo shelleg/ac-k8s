@@ -10,4 +10,4 @@ dependencies:
   version: 0.1.98
 - name: ant-ui
   repository: '@ac-charts'
-  version: 0.1.231
+  version: 0.1.236

@@ -1,24 +1,24 @@
 apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
-  name: "{{ include @ant-ui.name@ . }}"
+  name: {{ include "ant-ui.name" . }}
   labels:
-    app: "{{ include @ant-ui.name@ . }}"
-    chart: "{{ include @ant-ui.chart@ . }}"
-    release: "{{ .Release.Name }}"
-    heritage: "{{ .Release.Service }}"
+    app: {{ include "ant-ui.name" . }}
+    chart: {{ include "ant-ui.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
 spec:
-  replicas: "{{ .Values.replicaCount }}"
+  replicas: {{ .Values.replicaCount }}
   template:
     metadata:
       labels:
-        app: "{{ include @ant-ui.name@ . }}"
-        release: "{{ .Release.Name }}"
+        app: {{ include "ant-ui.name" . }}
+        release: {{ .Release.Name }}
     spec:
       containers:
-        name: "{{ include @ant-ui.name@ }}"
-        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-        imagePullPolicy: "{{ .Values.image.pullPolicy }}"
+        name: {{ include "ant-ui.name" }}
+        image: tikal/ant-ui:1.0.236
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
         ports:
           name: http
           containerPort: 5000
