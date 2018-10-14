@@ -30,7 +30,7 @@ spec:
         name:
           ? include "ant-publisher.name" .: null
           : null
-        image: tikal/ant-publisher:1.1.101
+        image: tikal/ant-publisher:1.1.102
         ports:
           containerPort: 6080
         volumeMounts:
