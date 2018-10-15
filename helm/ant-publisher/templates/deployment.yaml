@@ -8,7 +8,7 @@ metadata:
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: "{{ .Values.replicaCount }}"
   template:
     metadata:
       labels:
@@ -18,7 +18,7 @@ spec:
         name: {{ include "ant-publisher.name" . }}
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         ports:
-          containerPort: 6080
+          containerPort: "{{ .Values.service.port }}"
         volumeMounts:
           name: conf
           mountPath: {{ .Values.confMountDir }}
