@@ -14,7 +14,7 @@ spec:
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         ports:
-          containerPort: 7080
+          containerPort: {{ .Values.service.port }}
         volumeMounts:
           name: conf
           mountPath: {{ .Values.confMountDir }}
