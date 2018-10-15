@@ -1,4 +1,4 @@
-apiVersion: apps/v1beta2
+apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
   name: {{ template "ants-firehose.fullname" . }}
@@ -25,6 +25,6 @@ spec:
         - mountPath: {{ .Values.confMountDir }}
           name: conf
       volumes:
-      - name: conf
-        configMap:
-          name: ant-firehose-conf
+        - name: conf
+          configMap:
+            name: ant-firehose-conf
