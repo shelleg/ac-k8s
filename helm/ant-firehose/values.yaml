@@ -1,6 +1,6 @@
 image:
   repository: tikal/ants-firehose
-  tag: 1.0.130
+  tag: 1.0.131
   pullPolicy: Always
 confMountDir: /opt/firehose/conf
 serviceName: ac-kafka
