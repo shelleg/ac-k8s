@@ -7,7 +7,7 @@ dependencies:
   version: 0.1.130
 - name: ant-publisher
   repository: '@ac-charts'
-  version: 0.1.147
+  version: 0.1.148
 - name: ant-ui
   repository: '@ac-charts'
   version: 0.1.256
