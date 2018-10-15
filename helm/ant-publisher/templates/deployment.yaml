@@ -1,28 +1,30 @@
-apiVersion: apps/v1beta2
+apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: {{ include "ant-publisher.fullname" . }}
+  name: {{ template "ant-publisher.fullname" . }}
   labels:
-    app: {{ include "ant-publisher.name" . }}
-    chart: {{ include "ant-publisher.chart" . }}
-    release: {{ .Release.Name }}
-    heritage: {{ .Release.Service }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version }}
+    app.kubernetes.io/name: {{ template "ant-publisher.name" . }}
 spec:
-  replicas: "{{ .Values.replicaCount }}"
+  replicas: {{ .Values.replicaCount }}
   template:
     metadata:
       labels:
-        app: {{ include "ant-publisher.name" . }}
+        app.kubernetes.io/name: {{ template "ant-publisher.name" . }}
+        app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
       containers:
-        name: {{ include "ant-publisher.name" . }}
-        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-        ports:
-          containerPort: "{{ .Values.service.port }}"
-        volumeMounts:
+        - name: {{ template "ant-publisher.name" . }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - containerPort: 6080
+      volumeMounts:
+        - mountPath: {{ .Values.confMountDir }}
           name: conf
-          mountPath: {{ .Values.confMountDir }}
       volumes:
-        name: conf
+      - name: conf
         configMap:
           name: ant-publisher-conf.json

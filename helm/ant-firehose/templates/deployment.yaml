@@ -1,24 +1,30 @@
 apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
-  name: {{ template "ants-firehose.name" . }}
+  name: {{ template "ants-firehose.fullname" . }}
+  labels:
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version }}
+    app.kubernetes.io/name: {{ template "ants-firehose.name" . }}
 spec:
-  replicas: "{{ .Values.replicaCount }}"
+  replicas: {{ .Values.replicaCount }}
   template:
     metadata:
       labels:
-        app: {{ template "ants-firehose.name" . }}
+        app.kubernetes.io/name: {{ template "ants-firehose.name" . }}
+        app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
       containers:
-        name: {{ template "ants-firehose.name" . }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-        ports:
-          containerPort: {{ .Values.service.port }}
-        volumeMounts:
+        - name: {{ template "ants-firehose.name" . }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - containerPort: 7080
+      volumeMounts:
+        - mountPath: {{ .Values.confMountDir }}
           name: conf
-          mountPath: {{ .Values.confMountDir }}
       volumes:
-        name: conf
+      - name: conf
         configMap:
           name: ant-firehose-conf
