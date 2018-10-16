@@ -1,7 +1,7 @@
 replicaCount: 1
 image:
   repository: tikal/ants-ui
-  tag: 1.0.259
+  tag: 1.0.260
   pullPolicy: Always
 service:
   type: LoadBalancer
