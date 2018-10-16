@@ -3,10 +3,10 @@ kind: Service
 metadata:
   name: {{ template "ant-ui.fullname" . }}
   labels:
-    app: {{ template "ant-ui.name" . }}
-    chart: {{ template "ant-ui.chart" . }}
-    release: {{ .Release.Name }}
-    heritage: {{ .Release.Service }}
+    app.kubernetes.io/name: {{ template "ant-ui.name" . }}
+    helm.sh/chart: {{ template "ant-ui.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
 spec:
   type: {{ .Values.service.type }}
   ports:
@@ -15,5 +15,5 @@ spec:
       protocol: TCP
       name: http
   selector:
-    app: {{ template "ant-ui.name" . }}
-    release: {{ .Release.Name }}
+    app.kubernetes.io/name: {{ template "ant-ui.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
