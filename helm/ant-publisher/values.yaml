@@ -1,6 +1,6 @@
 image:
   repository: tikal/ants-publisher
-  tag: 1.1.156
+  tag: 1.1.157
   pullPolicy: Always
 replicaCount: 1
 service:
