@@ -4,10 +4,13 @@ dependencies:
   version: 0.10.0
 - name: ant-firehose
   repository: '@ac-charts'
-  version: 0.1.140
+  version: 0.1.139
 - name: ant-publisher
   repository: '@ac-charts'
-  version: 0.1.181
+  version: 0.1.162
 - name: ant-ui
   repository: '@ac-charts'
-  version: 0.1.261
+  version: 0.1.0
+- name: ants-smashing-service
+  repository: '@ac-charts'
+  version: 6.6.6
